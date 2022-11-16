@@ -1,15 +1,22 @@
-name: "Hit a webhook"
+name: "Bulk add"
  
 on:
   push:
     branches: [ "main" ]
  
 jobs:
-  run-updater:
+  bulkadd:
     runs-on: ubuntu-latest
     steps:
 
     - uses: actions/checkout@v3
+
+    - name: Get version
+      id: vars
+      run: echo ::set-output name=version::$(usernames.txt)
+
+    - name: Test output
+      run: echo ${{ steps.vars.outputs.version }}
 
     - name: 
       run: |
