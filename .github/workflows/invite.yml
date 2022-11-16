@@ -1,4 +1,5 @@
 name: "Bulk add"
+# https://docs.github.com/en/rest/collaborators/collaborators#add-a-repository-collaborator
  
 on:
   push:
