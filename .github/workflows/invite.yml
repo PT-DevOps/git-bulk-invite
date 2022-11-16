@@ -27,14 +27,21 @@ jobs:
     - name: 
       run: |
         for i in $(cat usernames.txt)
-          do
-            curl \
-              -X PUT \
-              -H "Accept: application/vnd.github+json" \
-              -H "Authorization: Bearer  ${{ secrets.PAT }}" \
-              https://api.github.com/repos/PT-DevOps/git-bulk-invite/collaborators/$i \
-              -d '{"permission":"triage"}'
-          done
+            do
+                echo $i list                 
+            done
+
+    - name: 
+      run: |
+        for i in $(cat usernames.txt)
+            do
+                curl \
+                  -X PUT \
+                  -H "Accept: application/vnd.github+json" \
+                  -H "Authorization: Bearer  ${{ secrets.PAT }}" \
+                  https://api.github.com/repos/PT-DevOps/git-bulk-invite/collaborators/$i \
+                  -d '{"permission":"triage"}'
+            done
 
 
     # - name: bulk add github users
