@@ -8,6 +8,16 @@ jobs:
   run-updater:
     runs-on: ubuntu-latest
     steps:
+
+    - uses: actions/checkout@v3
+
+    - name: 
+      run: |
+        pwd
+        ls -lrt
+        cat usernames.txt
+
+
     - name: bulk add github users
       run: |
         curl \
