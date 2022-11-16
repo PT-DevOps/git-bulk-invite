@@ -1,0 +1,23 @@
+name: "Hit a webhook"
+ 
+on:
+  push:
+    tags:
+      - '**'
+ 
+jobs:
+  run-updater:
+    runs-on: ubuntu-latest
+    steps:
+    - name: bulk add github users
+      run: |
+        curl \
+          -X PUT \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer  ${{ secrets.PAT }}" \
+          https://api.github.com/repos/PT-DevOps/git-bulk-invite/collaborators/Tejanarni \
+          -d '{"permission":"triage"}'
+
+
+
+
