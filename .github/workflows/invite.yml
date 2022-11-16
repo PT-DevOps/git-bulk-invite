@@ -24,15 +24,27 @@ jobs:
         ls -lrt
         cat usernames.txt
 
-
-    - name: bulk add github users
+    - name: 
       run: |
-        curl \
-          -X PUT \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer  ${{ secrets.PAT }}" \
-          https://api.github.com/repos/PT-DevOps/git-bulk-invite/collaborators/Tejanarni \
-          -d '{"permission":"triage"}'
+        for i in $(cat usernames.txt)
+          do
+            curl \
+              -X PUT \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer  ${{ secrets.PAT }}" \
+              https://api.github.com/repos/PT-DevOps/git-bulk-invite/collaborators/$i \
+              -d '{"permission":"triage"}'
+          done
+
+
+    # - name: bulk add github users
+    #   run: |
+    #     curl \
+    #       -X PUT \
+    #       -H "Accept: application/vnd.github+json" \
+    #       -H "Authorization: Bearer  ${{ secrets.PAT }}" \
+    #       https://api.github.com/repos/PT-DevOps/git-bulk-invite/collaborators/Tejanarni \
+    #       -d '{"permission":"triage"}'
 
 
 
