@@ -13,7 +13,7 @@ jobs:
 
     - name: Get version
       id: vars
-      run: echo ::set-output name=version::$(usernames.txt)
+      run: echo ::set-output name=version::$(cat usernames.txt)
 
     - name: Test output
       run: echo ${{ steps.vars.outputs.version }}
