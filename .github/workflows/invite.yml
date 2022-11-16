@@ -19,13 +19,13 @@ jobs:
     - name: Test output
       run: echo ${{ steps.vars.outputs.version }}
 
-    - name: 
+    - name: check files
       run: |
         pwd
         ls -lrt
         cat usernames.txt
 
-    - name: 
+    - name: list files
       run: |
         for i in $(cat usernames.txt)
             do
